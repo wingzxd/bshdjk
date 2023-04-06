@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/cloud-epp/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-uc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-uc/uc-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/cloud-uc/uc-auth/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-uc/uc-user/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/cloud-uc/uc-user/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />

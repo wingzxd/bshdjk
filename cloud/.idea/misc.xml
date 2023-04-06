@@ -9,6 +9,8 @@
         <option value="$PROJECT_DIR$/cloud-uc/uc-user/pom.xml" />
         <option value="$PROJECT_DIR$/cloud-gateway/pom.xml" />
         <option value="$PROJECT_DIR$/cloud-epp/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud-uc/uc-api/pom.xml" />
+        <option value="$PROJECT_DIR$/cloud-uc/uc-auth/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

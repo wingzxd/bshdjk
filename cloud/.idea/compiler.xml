@@ -10,6 +10,7 @@
         <module name="uc-user" />
         <module name="cloud-gateway" />
         <module name="cloud-app" />
+        <module name="uc-auth" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

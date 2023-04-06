@@ -31,7 +31,6 @@
         <jsoup.version>1.13.1</jsoup.version>
         <orika.version>1.5.4</orika.version>
         <captcha.version>1.2.5</captcha.version>
-        <knife4j.version>3.0.2</knife4j.version>
         <elasticsearch.version>7.9.1</elasticsearch.version>
         <minio.version>8.0.3</minio.version>
         <rocketmq-springboot.version>2.2.0</rocketmq-springboot.version>
@@ -133,16 +132,6 @@
                 <groupId>com.github.anji-plus</groupId>
                 <artifactId>captcha</artifactId>
                 <version>${captcha.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-micro-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.elasticsearch.client</groupId>
