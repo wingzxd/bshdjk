@@ -6,15 +6,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cloud-epp" />
         <module name="uc-user" />
+        <module name="cloud-common-rocketmq" />
+        <module name="cloud-common-database" />
+        <module name="uc-auth" />
+        <module name="cloud-common-core" />
+        <module name="uc-api" />
+        <module name="cloud-common-cache" />
         <module name="cloud-gateway" />
         <module name="cloud-app" />
-        <module name="uc-auth" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="cloud-app" target="1.8" />
+      <module name="cloud-common-security" target="1.8" />
+      <module name="epp" target="1.8" />
+      <module name="epp-api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

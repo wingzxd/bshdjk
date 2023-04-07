@@ -10,7 +10,14 @@
 
 	<artifactId>uc-api</artifactId>
 	<name>uc-api</name>
-	<packaging>pom</packaging>
+	<packaging>jar</packaging>
 	<description>用户中心对内接口</description>
 
+	<dependencies>
+		<dependency>
+			<groupId>com.bshdjk.cloud</groupId>
+			<artifactId>cloud-common-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 </project>
