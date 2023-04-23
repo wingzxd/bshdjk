@@ -3,6 +3,86 @@
   <component name="EasyCodeTableSetting">
     <option name="tableInfoMap">
       <map>
+        <entry key="demo.zoo">
+          <value>
+            <TableInfoDTO>
+              <option name="comment" value="动物园" />
+              <option name="fullColumn">
+                <list>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="动物园id" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="id" />
+                    <option name="type" value="java.lang.Long" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="动物园名称" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="name" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="动物园描述" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="des" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="createTime" />
+                    <option name="type" value="java.time.LocalDateTime" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="更新时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="updateTime" />
+                    <option name="type" value="java.time.LocalDateTime" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="是否删除" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="isDeleted" />
+                    <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建人" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="creator" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="更新人" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="updater" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="删除时间" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="deletedTime" />
+                    <option name="type" value="java.time.LocalDateTime" />
+                  </ColumnInfoDTO>
+                </list>
+              </option>
+              <option name="name" value="Zoo" />
+              <option name="preName" value="" />
+              <option name="saveModelName" value="demo" />
+              <option name="savePackageName" value="com.bshdjk.cloud.demo" />
+              <option name="savePath" value="./cloud-demo/demo/src/main/java/com/bshdjk/cloud/demo" />
+              <option name="templateGroupName" value="Bshdjk-Plus" />
+            </TableInfoDTO>
+          </value>
+        </entry>
         <entry key="epp.sys_user_role">
           <value>
             <TableInfoDTO>
@@ -58,6 +138,7 @@
         <entry key="epp.zoo">
           <value>
             <TableInfoDTO>
+              <option name="comment" value="动物园" />
               <option name="fullColumn">
                 <list>
                   <ColumnInfoDTO>
@@ -71,7 +152,7 @@
                     <option name="comment" value="动物园名称" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
-                    <option name="name" value="name" />
+                    <option name="name" value="zooName" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
@@ -96,20 +177,34 @@
                     <option name="type" value="java.util.Date" />
                   </ColumnInfoDTO>
                   <ColumnInfoDTO>
-                    <option name="comment" value="状态(0 正常 1 删除)" />
+                    <option name="comment" value="是否删除" />
                     <option name="custom" value="false" />
                     <option name="ext" value="{}" />
-                    <option name="name" value="status" />
+                    <option name="name" value="isDeleted" />
                     <option name="type" value="java.lang.Integer" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="创建人" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="creator" />
+                    <option name="type" value="java.lang.String" />
+                  </ColumnInfoDTO>
+                  <ColumnInfoDTO>
+                    <option name="comment" value="更新人" />
+                    <option name="custom" value="false" />
+                    <option name="ext" value="{}" />
+                    <option name="name" value="updater" />
+                    <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="Zoo" />
               <option name="preName" value="" />
               <option name="saveModelName" value="epp" />
-              <option name="savePackageName" value="com.bshdjk.cloud.epp.demo" />
-              <option name="savePath" value="./cloud-epp/epp/src/main/java/com/bshdjk/cloud/epp/demo" />
-              <option name="templateGroupName" value="Default" />
+              <option name="savePackageName" value="com.bshdjk.cloud.epp.demo1" />
+              <option name="savePath" value="./cloud-epp/epp/src/main/java/com/bshdjk/cloud/epp/demo1" />
+              <option name="templateGroupName" value="Bshdjk" />
             </TableInfoDTO>
           </value>
         </entry>

@@ -6,15 +6,12 @@ import com.bshdjk.cloud.common.constant.Auth;
 import com.bshdjk.cloud.common.feign.FeignInsideAuthConfig;
 import com.bshdjk.cloud.common.handler.HttpHandler;
 import com.bshdjk.cloud.common.response.ResponseEnum;
-import com.bshdjk.cloud.common.response.ServerResponseEntity;
+import com.bshdjk.cloud.common.response.Result;
 import com.bshdjk.cloud.common.security.AuthUserContext;
 import com.bshdjk.cloud.common.security.adapter.AuthConfigAdapter;
 import com.bshdjk.cloud.common.util.IpHelper;
 import com.bshdjk.cloud.uc.api.bo.UserInfoInTokenBO;
-import com.bshdjk.cloud.uc.api.constant.HttpMethodEnum;
 import com.bshdjk.cloud.uc.api.constant.SysTypeEnum;
-import com.bshdjk.cloud.uc.api.feign.PermissionFeignClient;
-import com.bshdjk.cloud.uc.api.feign.TokenFeignClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,11 +42,13 @@ public class AuthFilter implements Filter {
 	@Autowired
 	private HttpHandler httpHandler;
 
+	/*
 	@Autowired
 	private TokenFeignClient tokenFeignClient;
 
 	@Autowired
 	private PermissionFeignClient permissionFeignClient;
+	*/
 
 	@Autowired
 	private FeignInsideAuthConfig feignInsideAuthConfig;
@@ -61,7 +60,7 @@ public class AuthFilter implements Filter {
 		HttpServletResponse resp = (HttpServletResponse) response;
 
 		if (!feignRequestCheck(req)) {
-			httpHandler.printServerResponseToWeb(ServerResponseEntity.fail(ResponseEnum.UNAUTHORIZED));
+			httpHandler.printServerResponseToWeb(Result.fail(ResponseEnum.UNAUTHORIZED));
 			return;
 		}
 
@@ -87,10 +86,11 @@ public class AuthFilter implements Filter {
 		String accessToken = req.getHeader("Authorization");
 
 		if (StrUtil.isBlank(accessToken)) {
-			httpHandler.printServerResponseToWeb(ServerResponseEntity.fail(ResponseEnum.UNAUTHORIZED));
+			httpHandler.printServerResponseToWeb(Result.fail(ResponseEnum.UNAUTHORIZED));
 			return;
 		}
 
+		/*
 		// 校验token，并返回用户信息
 		ServerResponseEntity<UserInfoInTokenBO> userInfoInTokenVoServerResponseEntity = tokenFeignClient
 				.checkToken(accessToken);
@@ -98,12 +98,12 @@ public class AuthFilter implements Filter {
 			httpHandler.printServerResponseToWeb(ServerResponseEntity.fail(ResponseEnum.UNAUTHORIZED));
 			return;
 		}
-
 		UserInfoInTokenBO userInfoInToken = userInfoInTokenVoServerResponseEntity.getData();
-
+		*/
+		UserInfoInTokenBO userInfoInToken = new UserInfoInTokenBO();
 		// 需要用户角色权限，就去根据用户角色权限判断是否
 		if (!checkRbac(userInfoInToken,req.getRequestURI(), req.getMethod())) {
-			httpHandler.printServerResponseToWeb(ServerResponseEntity.fail(ResponseEnum.UNAUTHORIZED));
+			httpHandler.printServerResponseToWeb(Result.fail(ResponseEnum.UNAUTHORIZED));
 			return;
 		}
 
@@ -154,6 +154,7 @@ public class AuthFilter implements Filter {
 			return true;
 		}
 
+		/*
 		ServerResponseEntity<Boolean> booleanServerResponseEntity = permissionFeignClient
 				.checkPermission(userInfoInToken.getUserId(), userInfoInToken.getSysType(),uri,userInfoInToken.getIsAdmin(), HttpMethodEnum.valueOf(method.toUpperCase()).value() );
 
@@ -162,6 +163,8 @@ public class AuthFilter implements Filter {
 		}
 
 		return booleanServerResponseEntity.getData();
+		*/
+		return true;
 	}
 
 }

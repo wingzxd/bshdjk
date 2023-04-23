@@ -35,7 +35,7 @@
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-micro-spring-boot-starter</artifactId>
-            <version>3.0.2</version>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -50,6 +50,26 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.bshdjk.cloud</groupId>
+            <artifactId>cloud-common-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bshdjk.cloud</groupId>
+            <artifactId>cloud-common-database</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bshdjk.cloud</groupId>
+            <artifactId>cloud-common-cache</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bshdjk.cloud</groupId>
+            <artifactId>uc-api</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 

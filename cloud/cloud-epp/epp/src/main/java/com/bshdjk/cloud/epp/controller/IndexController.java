@@ -1,11 +1,5 @@
 package com.bshdjk.cloud.epp.controller;
 
-/**
- * 首页
- *
- * @author zhouxd
- * @date 2023-04-06 11:16:36
- */
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;

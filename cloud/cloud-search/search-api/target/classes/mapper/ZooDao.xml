@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bshdjk.cloud.epp.dao.ZooDao">
+
+    <resultMap type="com.bshdjk.cloud.epp.entity.Zoo" id="ZooMap">
+        <result property="zooId" column="zoo_id" jdbcType="INTEGER"/>
+        <result property="zooName" column="zoo_name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="updater" column="updater" jdbcType="VARCHAR"/>
+        <result property="deleter" column="deleter" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 批量插入 -->
+    <insert id="insertBatch" keyProperty="zooId" useGeneratedKeys="true">
+        insert into epp.zoo(zoo_name, description, create_time, update_time, is_deleted, creator, updater, deleter)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+        (#{entity.zooName}, #{entity.description}, #{entity.createTime}, #{entity.updateTime}, #{entity.isDeleted}, #{entity.creator}, #{entity.updater}, #{entity.deleter})
+        </foreach>
+    </insert>
+    <!-- 批量插入或按主键更新 -->
+    <insert id="insertOrUpdateBatch" keyProperty="zooId" useGeneratedKeys="true">
+        insert into epp.zoo(zoo_name, description, create_time, update_time, is_deleted, creator, updater, deleter)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.zooName}, #{entity.description}, #{entity.createTime}, #{entity.updateTime}, #{entity.isDeleted}, #{entity.creator}, #{entity.updater}, #{entity.deleter})
+        </foreach>
+        on duplicate key update
+         zoo_name = values(zoo_name) , description = values(description) , create_time = values(create_time) , update_time = values(update_time) , is_deleted = values(is_deleted) , creator = values(creator) , updater = values(updater) , deleter = values(deleter)     </insert>
+
+</mapper>
+

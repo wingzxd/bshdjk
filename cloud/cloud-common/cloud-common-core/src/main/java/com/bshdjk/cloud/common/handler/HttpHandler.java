@@ -1,9 +1,9 @@
 package com.bshdjk.cloud.common.handler;
 
 import cn.hutool.core.util.CharsetUtil;
+import com.bshdjk.cloud.common.response.Result;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.bshdjk.cloud.common.exception.BshCloudException;
-import com.bshdjk.cloud.common.response.ServerResponseEntity;
 import com.bshdjk.cloud.common.xss.XssUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public class HttpHandler {
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	public <T> void printServerResponseToWeb(ServerResponseEntity<T> serverResponseEntity) {
+	public <T> void printServerResponseToWeb(Result<T> serverResponseEntity) {
 		if (serverResponseEntity == null) {
 			logger.info("print obj is null");
 			return;

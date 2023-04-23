@@ -1,12 +1,8 @@
 package com.bshdjk.cloud.common.handler;
 
-import cn.hutool.core.util.StrUtil;
 import com.bshdjk.cloud.common.exception.BshCloudException;
 import com.bshdjk.cloud.common.response.ResponseEnum;
-import com.bshdjk.cloud.common.response.ServerResponseEntity;
-import io.seata.core.context.RootContext;
-import io.seata.core.exception.TransactionException;
-import io.seata.tm.api.GlobalTransactionContext;
+import com.bshdjk.cloud.common.response.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -35,7 +31,7 @@ public class DefaultExceptionHandlerConfig {
 	private static final Logger logger = LoggerFactory.getLogger(DefaultExceptionHandlerConfig.class);
 
 	@ExceptionHandler({ MethodArgumentNotValidException.class, BindException.class })
-	public ResponseEntity<ServerResponseEntity<List<String>>> methodArgumentNotValidExceptionHandler(Exception e) {
+	public ResponseEntity<Result<List<String>>> methodArgumentNotValidExceptionHandler(Exception e) {
 		logger.error("methodArgumentNotValidExceptionHandler", e);
 		List<FieldError> fieldErrors = null;
 		if (e instanceof MethodArgumentNotValidException) {
@@ -46,7 +42,7 @@ public class DefaultExceptionHandlerConfig {
 		}
 		if (fieldErrors == null) {
 			return ResponseEntity.status(HttpStatus.OK)
-					.body(ServerResponseEntity.fail(ResponseEnum.METHOD_ARGUMENT_NOT_VALID));
+					.body(Result.fail(ResponseEnum.METHOD_ARGUMENT_NOT_VALID));
 		}
 
 		List<String> defaultMessages = new ArrayList<>(fieldErrors.size());
@@ -54,37 +50,27 @@ public class DefaultExceptionHandlerConfig {
 			defaultMessages.add(fieldError.getField() + ":" + fieldError.getDefaultMessage());
 		}
 		return ResponseEntity.status(HttpStatus.OK)
-				.body(ServerResponseEntity.fail(ResponseEnum.METHOD_ARGUMENT_NOT_VALID, defaultMessages));
+				.body(Result.fail(ResponseEnum.METHOD_ARGUMENT_NOT_VALID, defaultMessages));
 	}
 
 	@ExceptionHandler({ HttpMessageNotReadableException.class })
-	public ResponseEntity<ServerResponseEntity<List<FieldError>>> methodArgumentNotValidExceptionHandler(
+	public ResponseEntity<Result<List<FieldError>>> methodArgumentNotValidExceptionHandler(
 			HttpMessageNotReadableException e) {
 		logger.error("methodArgumentNotValidExceptionHandler", e);
 		return ResponseEntity.status(HttpStatus.OK)
-				.body(ServerResponseEntity.fail(ResponseEnum.HTTP_MESSAGE_NOT_READABLE));
+				.body(Result.fail(ResponseEnum.HTTP_MESSAGE_NOT_READABLE));
 	}
 
 	@ExceptionHandler(BshCloudException.class)
-	public ResponseEntity<ServerResponseEntity<Object>> BshCloudExceptionHandler(BshCloudException e) {
+	public ResponseEntity<Result<Object>> BshCloudExceptionHandler(BshCloudException e) {
 		logger.error("BshCloudExceptionHandler", e);
 
 		ResponseEnum responseEnum = e.getResponseEnum();
 		// 失败返回失败消息 + 状态码
 		if (responseEnum != null) {
-			return ResponseEntity.status(HttpStatus.OK).body(ServerResponseEntity.fail(responseEnum, e.getObject()));
+			return ResponseEntity.status(HttpStatus.OK).body(Result.fail(responseEnum, e.getObject()));
 		}
 		// 失败返回消息 状态码固定为直接显示消息的状态码
-		return ResponseEntity.status(HttpStatus.OK).body(ServerResponseEntity.showFailMsg(e.getMessage()));
-	}
-
-	@ExceptionHandler(Exception.class)
-	public ResponseEntity<ServerResponseEntity<Object>> exceptionHandler(Exception e) throws TransactionException {
-		logger.error("exceptionHandler", e);
-		logger.info("RootContext.getXID(): " + RootContext.getXID());
-		if (StrUtil.isNotBlank(RootContext.getXID())) {
-			GlobalTransactionContext.reload(RootContext.getXID()).rollback();
-		}
-		return ResponseEntity.status(HttpStatus.OK).body(ServerResponseEntity.fail(ResponseEnum.EXCEPTION));
+		return ResponseEntity.status(HttpStatus.OK).body(Result.showFailMsg(e.getMessage()));
 	}
 }

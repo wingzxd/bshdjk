@@ -1,17 +1,13 @@
 package com.bshdjk.cloud.common.database.interceptor;
 
 import com.bshdjk.cloud.common.database.annotations.DistributedId;
-import com.bshdjk.cloud.common.exception.BshCloudException;
-import com.bshdjk.cloud.common.model.BaseModel;
-import com.bshdjk.cloud.common.response.ResponseEnum;
-import com.bshdjk.cloud.common.response.ServerResponseEntity;
+import com.bshdjk.cloud.common.entity.BaseEntity;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.mapping.SqlCommandType;
 import org.apache.ibatis.plugin.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -29,7 +25,9 @@ import java.util.Map;
  * @date 2020/9/9
  */
 @Component
-@Intercepts({@Signature(type = Executor.class, method = "update", args = {MappedStatement.class,Object.class})})
+@Intercepts({
+        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class,Object.class})
+ })
 public class GeneratedKeyInterceptor implements Interceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(GeneratedKeyInterceptor.class);
@@ -66,7 +64,7 @@ public class GeneratedKeyInterceptor implements Interceptor {
         // 获取 SQL
         SqlCommandType sqlCommandType = mappedStatement.getSqlCommandType();
 
-        // 不是 insert 类型的跳过
+        // 不是 insert 类型的进入
         if (SqlCommandType.INSERT != sqlCommandType) {
             return invocation.proceed();
         }
@@ -103,13 +101,13 @@ public class GeneratedKeyInterceptor implements Interceptor {
         return invocation.proceed();
     }
 
-    protected BaseModel findDbObject(Object parameterObj) {
-        if (parameterObj instanceof BaseModel) {
-            return  (BaseModel)parameterObj;
+    protected BaseEntity findDbObject(Object parameterObj) {
+        if (parameterObj instanceof BaseEntity) {
+            return  (BaseEntity)parameterObj;
         } else if (parameterObj instanceof Map) {
             for (Object val : ((Map<?, ?>) parameterObj).values()) {
-                if (val instanceof BaseModel) {
-                    return  (BaseModel)val;
+                if (val instanceof BaseEntity) {
+                    return  (BaseEntity)val;
                 }
             }
         }
@@ -139,6 +137,7 @@ public class GeneratedKeyInterceptor implements Interceptor {
             if (field.get(parameter) != null) {
                 break;
             }
+
             /*
             ServerResponseEntity<Long> segmentIdResponseEntity = segmentFeignClient.getSegmentId(annotation.value());
             if (segmentIdResponseEntity.isSuccess()) {
@@ -152,6 +151,8 @@ public class GeneratedKeyInterceptor implements Interceptor {
         }
     }
 
+
+
     /**
      * Plugin.wrap生成拦截代理对象
      */
@@ -163,6 +164,5 @@ public class GeneratedKeyInterceptor implements Interceptor {
             return o;
         }
     }
-
 }
 

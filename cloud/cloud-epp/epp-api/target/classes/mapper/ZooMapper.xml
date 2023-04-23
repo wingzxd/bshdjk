@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bshdjk.cloud.epp.dao.ZooMapper">
+
+    <resultMap type="com.bshdjk.cloud.epp.entity.Zoo" id="ZooMap">
+        <result property="zooId" column="zoo_id" jdbcType="INTEGER"/>
+        <result property="zooName" column="zoo_name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
+        <result property="creator" column="creator" jdbcType="VARCHAR"/>
+        <result property="updater" column="updater" jdbcType="VARCHAR"/>
+        <result property="deleter" column="deleter" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ZooMap">
+        select
+          zoo_id, zoo_name, description, create_time, update_time, is_deleted, creator, updater, deleter
+        from zoo
+        where zoo_id = #{zooId}
+        and is_deleted = 0
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ZooMap">
+        select
+          zoo_id, zoo_name, description, create_time, update_time, is_deleted, creator, updater, deleter
+        from zoo
+        <where>
+        is_deleted = 0
+            <if test="zooId != null">
+                and zoo_id = #{zooId}
+            </if>
+            <if test="zooName != null and zooName != ''">
+                and zoo_name = #{zooName}
+            </if>
+            <if test="description != null and description != ''">
+                and description = #{description}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDeleted != null">
+                and is_deleted = #{isDeleted}
+            </if>
+            <if test="creator != null and creator != ''">
+                and creator = #{creator}
+            </if>
+            <if test="updater != null and updater != ''">
+                and updater = #{updater}
+            </if>
+            <if test="deleter != null and deleter != ''">
+                and deleter = #{deleter}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from zoo
+        <where>
+                is_deleted = 0
+            <if test="zooId != null">
+                and zoo_id = #{zooId}
+            </if>
+            <if test="zooName != null and zooName != ''">
+                and zoo_name = #{zooName}
+            </if>
+            <if test="description != null and description != ''">
+                and description = #{description}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="isDeleted != null">
+                and is_deleted = #{isDeleted}
+            </if>
+            <if test="creator != null and creator != ''">
+                and creator = #{creator}
+            </if>
+            <if test="updater != null and updater != ''">
+                and updater = #{updater}
+            </if>
+            <if test="deleter != null and deleter != ''">
+                and deleter = #{deleter}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="zooId" useGeneratedKeys="true">
+        insert into zoo(zoo_name, description, create_time, update_time, is_deleted, creator, updater, deleter)
+        values (#{zooName}, #{description}, #{createTime}, #{updateTime}, #{isDeleted}, #{creator}, #{updater}, #{deleter})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update zoo
+        <set>
+            <if test="zooName != null and zooName != ''">
+                zoo_name = #{zooName},
+            </if>
+            <if test="description != null and description != ''">
+                description = #{description},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted},
+            </if>
+            <if test="creator != null and creator != ''">
+                creator = #{creator},
+            </if>
+            <if test="updater != null and updater != ''">
+                updater = #{updater},
+            </if>
+            <if test="deleter != null and deleter != ''">
+                deleter = #{deleter},
+            </if>
+        </set>
+        where zoo_id = #{zooId}
+    </update>
+
+</mapper>
+

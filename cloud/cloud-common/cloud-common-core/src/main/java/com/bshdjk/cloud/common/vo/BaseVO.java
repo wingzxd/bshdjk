@@ -1,49 +1,47 @@
 package com.bshdjk.cloud.common.vo;
 
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
- * 阿里java开发手册： 【强制】表必备三字段：id, create_time, update_time。 说明：其中 id 必为主键，类型为 bigint
- * unsigned、单表时自增、步长为 1。create_time, update_time 的类型均为 datetime
- * 类型，前者现在时表示主动式创建，后者过去分词表示被动式更新。
+ * 【强制】表必备5个字段：id, create_time, update_time,is_deleted,deleted_time。 说明：其中 id 必为主键，类型为 bigint
+ * unsigned、单表时自增、步长为 1。create_time, update_time，deleted_time 的类型均为 datetime类型，
+ * is_deleted表示是否删除，数据都建议进行逻辑删除，确实确认无用后可进行批量逻辑删除
  *
- * @author FrozenWatermelon
+ * @author zhouxd
+ * @since 2023-04-15 13:21:01
  */
+
+@Data
 public class BaseVO {
 
 	/**
 	 * 创建时间
 	 */
 	@ApiModelProperty("创建时间")
-	protected Date createTime;
+	protected LocalDateTime createTime;
 
 	/**
 	 * 更新时间
 	 */
 	@ApiModelProperty("更新时间")
-	protected Date updateTime;
+	protected LocalDateTime updateTime;
 
-	public Date getCreateTime() {
-		return createTime;
-	}
 
-	public void setCreateTime(Date createTime) {
-		this.createTime = createTime;
-	}
+	/**
+	 * 是否删除
+	 */
+	@ApiModelProperty("是否删除")
+	protected int isDeleted;
 
-	public Date getUpdateTime() {
-		return updateTime;
-	}
+	/**
+	 * 删除时间
+	 */
+	@ApiModelProperty("删除时间")
+	protected LocalDateTime deletedTime;
 
-	public void setUpdateTime(Date updateTime) {
-		this.updateTime = updateTime;
-	}
 
-	@Override
-	public String toString() {
-		return "BaseDTO{" + "createTime=" + createTime + ", updateTime=" + updateTime + '}';
-	}
 
 }
