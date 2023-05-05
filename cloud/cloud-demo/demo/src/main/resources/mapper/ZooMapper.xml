@@ -11,7 +11,40 @@
         <result property="isDeleted" column="is_deleted" jdbcType="INTEGER"/>
         <result property="creator" column="creator" jdbcType="VARCHAR"/>
         <result property="updater" column="updater" jdbcType="VARCHAR"/>
-        <result property="deletedTime" column="deleted_time" jdbcType="TIMESTAMP"/>
     </resultMap>
-</mapper>
+
+
+    <resultMap id="pageZooAnimal" type="com.bshdjk.cloud.demo.vo.ZooAnimalVO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="des" jdbcType="VARCHAR" property="des"/>
+        <collection property="animals" ofType="com.bshdjk.cloud.demo.vo.AnimalVO">
+            <!--  一对多，如果多个表字段名相同，要记住使用别名，否则多条数据只显示一条   -->
+            <id column="animal_id" jdbcType="BIGINT" property="animalId"/>
+            <result column="animal_name" jdbcType="VARCHAR" property="animalName"/>
+            <result column="animal_intro" jdbcType="VARCHAR" property="animalIntro"/>
+        </collection>
+    </resultMap>
+
+    <select id="pageZooAnimal" resultMap="pageZooAnimal" parameterType="com.bshdjk.cloud.demo.request.ZooAnimalQueryRequest">
+        select z.id,z.name,z.des,
+        a.id as animal_id,a.name as animal_name,a.intro as animal_intro
+        from zoo z left join animal a on z.id=a.zoo_id
+        and a.is_deleted = 0 and z.is_deleted = 0
+        <where>
+            <if test="query.id != null">
+                and z.id = #{query.id,jdbcType=BIGINT}
+            </if>
+            <if test="query.name !='' and query.name != null">
+                and z.name = #{query.name,jdbcType=VARCHAR}
+            </if>
+            <if test="query.animalId != null">
+                and a.id = #{query.animalId,jdbcType=BIGINT}
+            </if>
+            <if test="query.animalName !='' and query.animalName != null">
+                and a.name = #{query.animalName,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+ </mapper>
 

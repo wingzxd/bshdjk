@@ -1,22 +1,22 @@
 package com.bshdjk.cloud.demo.request;
 
-import java.time.LocalDateTime;
-import lombok.Data;
-import java.io.Serializable;
+import com.bshdjk.cloud.common.request.BasePage;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import com.bshdjk.cloud.common.request.BasePage;
+import lombok.Data;
+
+import java.io.Serializable;
 
 /**
- * 动物园(Zoo)表实体类
+ * 动物园(Zoo)分页查询类
  *
  * @author zhouxd
- * @since 2023-04-19 15:33:54
+ * @since 2023-04-24 16:30:37
  */
 @Data
 @ApiModel("动物园")
 public class ZooQueryRequest extends BasePage implements Serializable {
-    private static final long serialVersionUID = 540117257667953851L;
+    private static final long serialVersionUID = 545501893850466936L;
         
     @ApiModelProperty(value = "动物园id")
     private Long id;
@@ -32,5 +32,5 @@ public class ZooQueryRequest extends BasePage implements Serializable {
             
     @ApiModelProperty(value = "更新人")
     private String updater;
-        
+    
 }

@@ -1,8 +1,10 @@
 package com.bshdjk.cloud.common.response;
 
 /**
- * @author FrozenWatermelon
- * @date 2020/7/9
+ * response 枚举值
+ *
+ * @author zhouxd
+ * @since 2023-04-24 15:21:23
  */
 public enum ResponseEnum {
 

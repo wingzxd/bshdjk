@@ -1,11 +1,9 @@
 package com.bshdjk.cloud.search.dto;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.bshdjk.cloud.common.dto.BaseDTO;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 动物园 DTO
@@ -14,7 +12,7 @@ import java.util.List;
  * @date 2023-04-07 10:15:32
  */
 @Data
-public class ZooDTO implements Serializable {
+public class ZooDTO extends BaseDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	/**
@@ -29,16 +27,4 @@ public class ZooDTO implements Serializable {
 	 * 动物园描述
 	 */
 	private String description;
-	/**
-	 * 创建时间
-	 */
-	private Date createTime;
-	/**
-	 * 更新时间
-	 */
-	private Date updateTime;
-	/**
-	 * 是否删除
-	 */
-	private Long isDeleted;
 }

@@ -1,15 +1,19 @@
-package com.bshdjk.cloud.uc.user.dto;
+package com.bshdjk.cloud.uc.api.dto;
 
+import com.bshdjk.cloud.common.dto.BaseDTO;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 /**
  * 用户表DTO
  *
- * @author YXF
- * @date 2020-12-08 11:18:04
+ * @author zhouxd
+ * @since 2023-05-05 11:03:04
  */
-public class UserDTO{
-    private static final long serialVersionUID = 1L;
+@Data
+@ApiModel("用户DTO")
+public class UserDTO extends BaseDTO {
 
     @ApiModelProperty("ID")
     private Long userId;
@@ -22,46 +26,4 @@ public class UserDTO{
 
     @ApiModelProperty("状态 1 正常 0 无效")
     private Integer status;
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-
-	public String getNickName() {
-		return nickName;
-	}
-
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
-	}
-
-	public String getPic() {
-		return pic;
-	}
-
-	public void setPic(String pic) {
-		this.pic = pic;
-	}
-
-	public Integer getStatus() {
-		return status;
-	}
-
-	public void setStatus(Integer status) {
-		this.status = status;
-	}
-
-	@Override
-	public String toString() {
-		return "UserDTO{" +
-				"userId=" + userId +
-				",nickName=" + nickName +
-				",pic=" + pic +
-				",status=" + status +
-				'}';
-	}
 }

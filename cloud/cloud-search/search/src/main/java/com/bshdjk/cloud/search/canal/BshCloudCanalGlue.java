@@ -11,7 +11,8 @@ import cn.throwx.canal.gule.support.processor.CanalBinlogEventProcessorFactory;
 import java.util.List;
 
 /**
- * @author FrozenWatermelon
+ * @author zhouxd
+ * @since 2023/5/4
  */
 public class BshCloudCanalGlue implements CanalGlue {
 

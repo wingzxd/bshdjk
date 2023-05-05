@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * @author FrozenWatermelon
- * @date 2021/02/03
+ * @author zhouxd
+ * @since 2021-02-03
  */
 @Component
 @RocketMQMessageListener(topic = RocketMqConstant.CANAL_TOPIC,consumerGroup = RocketMqConstant.CANAL_TOPIC)

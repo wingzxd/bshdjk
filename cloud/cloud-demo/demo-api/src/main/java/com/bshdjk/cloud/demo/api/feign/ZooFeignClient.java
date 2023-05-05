@@ -7,6 +7,12 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+/**
+ * 动物园(Zoo)接口
+ *
+ * @author zhouxd
+ * @since 2023-05-04 09:24:36
+ */
 @FeignClient(value = "demo",contextId = "zoo")
 public interface ZooFeignClient {
 

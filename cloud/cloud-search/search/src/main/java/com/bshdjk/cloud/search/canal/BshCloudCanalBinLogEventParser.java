@@ -7,19 +7,17 @@ import cn.throwx.canal.gule.model.CanalBinLogResult;
 import cn.throwx.canal.gule.support.parser.BaseCommonEntryFunction;
 import cn.throwx.canal.gule.support.parser.BasePrimaryKeyTupleFunction;
 import cn.throwx.canal.gule.support.parser.CanalBinLogEventParser;
-import cn.throwx.canal.gule.support.parser.DefaultCanalBinLogEventParser;
 import com.alibaba.fastjson.JSON;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.*;
 
 /**
- * @author FrozenWatermelon
+ * @author zhouxd
+ * @since 2023/5/4
  */
+@Slf4j
 public class BshCloudCanalBinLogEventParser implements CanalBinLogEventParser {
-
-    private static final Logger log = LoggerFactory.getLogger(DefaultCanalBinLogEventParser.class);
 
     @Override
     public <T> List<CanalBinLogResult<T>> parse(CanalBinLogEvent event, Class<T> klass, BasePrimaryKeyTupleFunction primaryKeyFunction, BaseCommonEntryFunction<T> commonEntryFunction) {

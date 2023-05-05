@@ -6,7 +6,7 @@ package com.bshdjk.cloud.common.cache.constant;
  * @author FrozenWatermelon
  * @date 2020/7/9
  */
-public interface CacheNames extends RbacCacheNames,OauthCacheNames,ProductCacheNames,MultishopCacheNames,PlatformCacheNames,BizCacheNames, UserCacheNames {
+public interface CacheNames extends RbacCacheNames,OauthCacheNames,BizCacheNames, UserCacheNames {
     /**
      *
      * 参考CacheKeyPrefix

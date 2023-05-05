@@ -3,8 +3,8 @@ package com.bshdjk.cloud.search.constant;
 /**
  * 配置缓存名字
  *
- * @author lhd
- * @date 2020/12/30
+ * @author zhouxd
+ * @date 2023-04-16 11:14:23
  */
 public interface EsConstant {
 

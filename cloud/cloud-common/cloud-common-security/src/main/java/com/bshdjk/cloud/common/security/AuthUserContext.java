@@ -1,4 +1,5 @@
 package com.bshdjk.cloud.common.security;
+
 import com.bshdjk.cloud.uc.api.bo.UserInfoInTokenBO;
 
 /**

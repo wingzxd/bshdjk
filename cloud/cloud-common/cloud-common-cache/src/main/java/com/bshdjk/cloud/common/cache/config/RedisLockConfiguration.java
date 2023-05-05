@@ -7,7 +7,7 @@ import org.springframework.integration.redis.util.RedisLockRegistry;
 
 /**
  * @author FrozenWatermelon
- * @date 2020/12/29
+ * @since 2020/12/29
  */
 @Configuration
 public class RedisLockConfiguration {

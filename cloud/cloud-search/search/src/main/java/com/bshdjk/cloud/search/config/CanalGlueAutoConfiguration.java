@@ -25,7 +25,7 @@ import java.util.Map;
  * @author throwable
  * @version v1
  * @description
- * @since 2020/9/20 17:05
+ * @since 2020-9-20 17:05
  */
 @Configuration
 public class CanalGlueAutoConfiguration implements SmartInitializingSingleton, BeanFactoryAware {

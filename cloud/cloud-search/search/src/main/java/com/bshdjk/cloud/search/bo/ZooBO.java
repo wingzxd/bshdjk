@@ -4,6 +4,8 @@ import cn.throwx.canal.gule.annotation.CanalModel;
 import cn.throwx.canal.gule.common.FieldNamingPolicy;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 /**
  * 动物园bo
  *
@@ -27,7 +29,16 @@ public class ZooBO {
     /**
      * 动物园描述
      */
-    private String desc;
+    private String des;
 
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createTime ;
+
+    /**
+     * 更新时间
+     */
+    private LocalDateTime updateTime;
 
 }

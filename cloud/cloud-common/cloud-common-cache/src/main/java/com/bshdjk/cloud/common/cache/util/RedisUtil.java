@@ -6,8 +6,7 @@ import com.bshdjk.cloud.common.cache.constant.CacheNames;
 import com.bshdjk.cloud.common.exception.BshCloudException;
 import com.bshdjk.cloud.common.response.ResponseEnum;
 import com.bshdjk.cloud.common.util.SpringContextUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.script.DefaultRedisScript;
@@ -17,12 +16,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * @author FrozenWatermelon
- * @date 2020/7/11
+ * @author zhouxd
+ * @since 2020/7/11
  */
+@Slf4j
 public class RedisUtil {
-
-	private static final Logger logger = LoggerFactory.getLogger(RedisUtil.class);
 
 	@SuppressWarnings("unchecked")
 	private static final RedisTemplate<String, Object> REDIS_TEMPLATE = SpringContextUtils.getBean("redisTemplate",
@@ -49,7 +47,7 @@ public class RedisUtil {
 			return Boolean.TRUE;
 		}
 		catch (Exception e) {
-			logger.error("Set expire error: {}", e.getMessage());
+			log.error("Set expire error: {}", e.getMessage());
 			return Boolean.FALSE;
 		}
 	}
@@ -79,7 +77,7 @@ public class RedisUtil {
 			return REDIS_TEMPLATE.hasKey(key);
 		}
 		catch (Exception e) {
-			logger.error("Error getting hasKey: {}", e.getMessage());
+			log.error("Error getting hasKey: {}", e.getMessage());
 			return Boolean.FALSE;
 		}
 	}
@@ -141,7 +139,7 @@ public class RedisUtil {
 			return true;
 		}
 		catch (Exception e) {
-			logger.error("Redis opsForValue error: {}", e.getMessage());
+			log.error("Redis opsForValue error: {}", e.getMessage());
 			return false;
 		}
 	}
@@ -192,7 +190,7 @@ public class RedisUtil {
 			return true;
 		}
 		catch (Exception e) {
-			logger.error("setLongValue() error: {}", e.getMessage());
+			log.error("setLongValue() error: {}", e.getMessage());
 			return false;
 		}
 	}

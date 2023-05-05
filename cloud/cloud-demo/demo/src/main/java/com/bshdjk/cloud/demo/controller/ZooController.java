@@ -1,23 +1,25 @@
 package com.bshdjk.cloud.demo.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.bshdjk.cloud.common.response.Result;
 import com.bshdjk.cloud.demo.entity.Zoo;
+import com.bshdjk.cloud.demo.request.ZooAnimalQueryRequest;
 import com.bshdjk.cloud.demo.request.ZooQueryRequest;
 import com.bshdjk.cloud.demo.service.ZooService;
+import com.bshdjk.cloud.demo.vo.ZooAnimalVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
 
 /**
  * 动物园(Zoo)表控制层
  *
  * @author zhouxd
- * @since 2023-04-19 18:52:11
+ * @since 2023-04-24 16:30:37
  */
 @RestController
 @RequestMapping("zoo")
@@ -37,9 +39,8 @@ public class ZooController {
      */
     @GetMapping
     @ApiOperation(value = "分页获取动物园列表")
-    public Result<Page<Zoo>> getList(ZooQueryRequest request) {
+    public Result<IPage<Zoo>> getList(ZooQueryRequest request) {
         Page<Zoo> page = new Page<>(request.getPageNo(),request.getPageSize());
-
         return Result.succ(zooService.page(page, new QueryWrapper<>()));
     }
 
@@ -91,9 +92,20 @@ public class ZooController {
         Zoo zoo = new Zoo();
         zoo.setId(id);
         zoo.setIsDeleted(1);
-        zoo.setDeletedTime(LocalDateTime.now());
         zoo.setUpdater("getUserName");
         return Result.succ(zooService.updateById(zoo));
+    }
+
+    /**
+     * 分页查询
+     *
+     * @param request 分页对象
+     * @return 查询结果
+     */
+    @GetMapping( "getzooanimallist")
+    @ApiOperation(value = "分页获取动物园和动物信息")
+    public Result<IPage<ZooAnimalVO>> getZooAnimalList(ZooAnimalQueryRequest request) {
+        return Result.succ(zooService.pageZooAnimal(request));
     }
 }
 

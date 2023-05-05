@@ -2,20 +2,21 @@ package com.bshdjk.cloud.search.constant;
 
 /**
  * es当中的index
- * @author FrozenWatermelon
- * @date 2020/11/12
+ * @author zhouxd
+ * @date 2023-04-16 11:15:33
  */
 public enum EsIndexEnum {
 
     /**
-     * 商品
+     * 动物园
      */
-    PRODUCT("product"),
+    ZOO("zoo"),
+
 
     /**
      * 订单
      */
-    ORDER("order"),
+    ORDER("order")
 
     ;
 

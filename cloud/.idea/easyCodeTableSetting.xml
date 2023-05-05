@@ -65,13 +65,6 @@
                     <option name="name" value="updater" />
                     <option name="type" value="java.lang.String" />
                   </ColumnInfoDTO>
-                  <ColumnInfoDTO>
-                    <option name="comment" value="删除时间" />
-                    <option name="custom" value="false" />
-                    <option name="ext" value="{}" />
-                    <option name="name" value="deletedTime" />
-                    <option name="type" value="java.time.LocalDateTime" />
-                  </ColumnInfoDTO>
                 </list>
               </option>
               <option name="name" value="Zoo" />

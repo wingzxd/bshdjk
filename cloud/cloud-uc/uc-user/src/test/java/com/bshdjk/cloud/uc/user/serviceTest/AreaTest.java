@@ -1,8 +1,6 @@
 package com.bshdjk.cloud.uc.user.serviceTest;
 
 import cn.hutool.core.date.DateTime;
-import com.bshdjk.cloud.uc.user.model.Area;
-import com.bshdjk.cloud.uc.user.service.AreaService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

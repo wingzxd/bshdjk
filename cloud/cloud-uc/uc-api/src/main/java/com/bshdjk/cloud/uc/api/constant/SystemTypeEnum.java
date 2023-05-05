@@ -2,10 +2,10 @@ package com.bshdjk.cloud.uc.api.constant;
 
 /**
  * 系统类型
- * @author FrozenWatermelon
- * @date 2020/7/2
+ * @author zhouxd
+ * @since  2023-05-05 10:59:50
  */
-public enum SysTypeEnum {
+public enum SystemTypeEnum {
 
 	/**
 	 * 普通用户系统
@@ -13,14 +13,19 @@ public enum SysTypeEnum {
 	ORDINARY(0),
 
 	/**
+	 * 医生端
+	 */
+	DOCTOR(1),
+
+	/**
 	 * 商家端
 	 */
-	MULTISHOP(1),
+	MULTISHOP(2),
 
 	/**
 	 * 平台端
 	 */
-	PLATFORM(2),
+	PLATFORM(3),
 
 	;
 
@@ -30,7 +35,7 @@ public enum SysTypeEnum {
 		return value;
 	}
 
-	SysTypeEnum(Integer value) {
+	SystemTypeEnum(Integer value) {
 		this.value = value;
 	}
 

@@ -3,6 +3,12 @@ package com.bshdjk.cloud.common.request;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+/**
+ * page基类
+ *
+ * @author zhouxd
+ * @since 2023-04-15 13:21:01
+ */
 @Data
 public class BasePage {
 

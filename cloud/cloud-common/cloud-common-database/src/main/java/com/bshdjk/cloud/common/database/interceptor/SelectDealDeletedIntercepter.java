@@ -21,6 +21,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.stereotype.Component;
 
 import java.sql.Connection;
+import java.util.Objects;
 
 /**
  * 查询时增加 is_deleted = 0 限制
@@ -36,6 +37,8 @@ import java.sql.Connection;
 @Component
 public class SelectDealDeletedIntercepter implements Interceptor {
 
+    private final String DELETE_FILTER = "is_deleted = 0";
+
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
@@ -48,11 +51,14 @@ public class SelectDealDeletedIntercepter implements Interceptor {
             Statement statement = CCJSqlParserUtil.parse(sql);
             Select select = (Select) statement;
             PlainSelect selectBody = (PlainSelect) select.getSelectBody();
-            //添加过滤条件
-            StringBuilder sqlFilter = new StringBuilder(128);
-            sqlFilter.append("is_deleted=0");
-            buildWhereClause(selectBody, sqlFilter.toString());
-            ReflectUtil.setFieldValue(statementHandler.getBoundSql(), "sql", statement.toString());
+            if (Objects.nonNull(selectBody)) {
+                if (Objects.isNull(selectBody.getJoins())){
+                    //添加过滤条件
+                    buildWhereClause(selectBody, DELETE_FILTER);
+                    ReflectUtil.setFieldValue(statementHandler.getBoundSql(), "sql", statement.toString());
+                }
+            }
+
             /* 统计sql查询时间
             // SQL execute开始时间
             long startTimeMillis = System.currentTimeMillis();
@@ -72,9 +78,9 @@ public class SelectDealDeletedIntercepter implements Interceptor {
 
     /**
      * 增加限制字段
-     * @param select
-     * @param dataFilter
-     * @throws JSQLParserException
+     * @param select 参数
+     * @param dataFilter 过滤条件
+     * @throws JSQLParserException sql异常
      */
     private void buildWhereClause(PlainSelect select, String dataFilter) throws JSQLParserException {
         if (select.getWhere() == null) {

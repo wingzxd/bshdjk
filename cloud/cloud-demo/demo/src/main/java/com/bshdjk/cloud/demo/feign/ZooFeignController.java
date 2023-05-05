@@ -6,7 +6,6 @@ import com.bshdjk.cloud.demo.api.feign.ZooFeignClient;
 import com.bshdjk.cloud.demo.entity.Zoo;
 import com.bshdjk.cloud.demo.service.ZooService;
 import ma.glasnost.orika.MapperFacade;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -32,8 +31,9 @@ public class ZooFeignController implements ZooFeignClient {
         Zoo zoo = zooService.getById(zooId);
         if (Objects.nonNull(zoo)) {
             return Result.succ(mapperFacade.map(zoo,ZooDTO.class));
+        }else {
+            return Result.succ(null);
         }
-        return null;
     }
 
 }

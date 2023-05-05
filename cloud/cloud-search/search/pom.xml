@@ -58,11 +58,6 @@
         </dependency>
         <dependency>
             <groupId>com.bshdjk.cloud</groupId>
-            <artifactId>cloud-common-database</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.bshdjk.cloud</groupId>
             <artifactId>cloud-common-rocketmq</artifactId>
             <version>${project.version}</version>
         </dependency>

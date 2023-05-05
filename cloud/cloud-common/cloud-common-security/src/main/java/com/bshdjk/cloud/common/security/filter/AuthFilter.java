@@ -11,7 +11,7 @@ import com.bshdjk.cloud.common.security.AuthUserContext;
 import com.bshdjk.cloud.common.security.adapter.AuthConfigAdapter;
 import com.bshdjk.cloud.common.util.IpHelper;
 import com.bshdjk.cloud.uc.api.bo.UserInfoInTokenBO;
-import com.bshdjk.cloud.uc.api.constant.SysTypeEnum;
+import com.bshdjk.cloud.uc.api.constant.SystemTypeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,7 +150,7 @@ public class AuthFilter implements Filter {
 	 */
 	public boolean checkRbac(UserInfoInTokenBO userInfoInToken, String uri, String method) {
 
-		if (!Objects.equals(SysTypeEnum.PLATFORM.value(), userInfoInToken.getSysType()) && !Objects.equals(SysTypeEnum.MULTISHOP.value(), userInfoInToken.getSysType())) {
+		if (!Objects.equals(SystemTypeEnum.PLATFORM.value(), userInfoInToken.getSystemType()) && !Objects.equals(SystemTypeEnum.MULTISHOP.value(), userInfoInToken.getSystemType())) {
 			return true;
 		}
 
