@@ -1,8 +1,7 @@
 package com.bshdjk.cloud.common.security.adapter;
 
 import com.bshdjk.cloud.common.feign.FeignInsideAuthConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,14 +10,13 @@ import java.util.List;
 
 /**
  * @author FrozenWatermelon
- * @date 2020/7/16
+ * @since 2020/7/16
  */
+@Slf4j
 public class DefaultAuthConfigAdapter implements AuthConfigAdapter {
 
-	private static final Logger logger = LoggerFactory.getLogger(DefaultAuthConfigAdapter.class);
-
 	public DefaultAuthConfigAdapter() {
-		logger.info("not implement other AuthConfigAdapter, use DefaultAuthConfigAdapter... all url need auth...");
+		log.info("not implement other AuthConfigAdapter, use DefaultAuthConfigAdapter... all url need auth...");
 	}
 
 	/**

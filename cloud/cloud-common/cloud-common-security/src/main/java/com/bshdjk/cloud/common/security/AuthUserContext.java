@@ -4,7 +4,7 @@ import com.bshdjk.cloud.uc.api.bo.UserInfoInTokenBO;
 
 /**
  * @author FrozenWatermelon
- * @date 2020/7/16
+ * @since 2020/7/16
  */
 public class AuthUserContext {
 

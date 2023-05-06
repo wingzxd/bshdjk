@@ -17,7 +17,7 @@ import javax.servlet.DispatcherType;
  * 授权配置
  *
  * @author FrozenWatermelon
- * @date 2020/7/11
+ * @since 2020/7/11
  */
 @Configuration
 public class AuthConfig {

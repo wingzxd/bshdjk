@@ -29,7 +29,7 @@ import java.util.Objects;
  * 授权过滤，只要实现AuthConfigAdapter接口，添加对应路径即可：
  *
  * @author FrozenWatermelon
- * @date 2020/7/11
+ * @since 2020/7/11
  */
 @Component
 public class AuthFilter implements Filter {

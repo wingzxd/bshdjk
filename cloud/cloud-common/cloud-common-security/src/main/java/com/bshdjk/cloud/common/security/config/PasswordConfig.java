@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  * @author FrozenWatermelon
- * @date 2020/7/3
+ * @since 2020/7/3
  */
 @Configuration
 public class PasswordConfig {

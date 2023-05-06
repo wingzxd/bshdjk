@@ -6,7 +6,7 @@ import com.bshdjk.cloud.uc.api.bo.UserInfoInTokenBO;
  * 用于校验的用户信息
  *
  * @author FrozenWatermelon
- * @date 2020/7/3
+ * @since 2020/7/3
  */
 public class AuthAccountInVerifyBO extends UserInfoInTokenBO {
 

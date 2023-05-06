@@ -4,6 +4,9 @@ spring:
   application:
     name: @artifactId@
   cloud:
+    loadbalancer:
+      cache:
+        enabled: false
     nacos:
       discovery:
         server-addr: ${NACOS_HOST:192.168.2.5}:${NACOS_PORT:8848}

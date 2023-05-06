@@ -32,7 +32,7 @@ public class SwaggerConfiguration {
 	@Bean
 	public ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("宝石花商城接口文档").description("宝石花商城接口文档Swagger版").termsOfServiceUrl("")
-				.contact(new Contact("宝石花大健康", "", "")).version("1.0").build();
+				.contact(new Contact("宝石花大健康用户中心", "", "")).version("1.0").build();
 	}
 
 }
